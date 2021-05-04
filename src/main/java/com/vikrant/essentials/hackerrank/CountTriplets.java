@@ -26,7 +26,7 @@ public class CountTriplets {
 //        long r = Long.parseLong(nr[1]);
 
         String[] arrItems = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
-
+        System.out.println(arrItems.length);
         List<Long> arr = new ArrayList<>();
 
         for (int i = 0; i < 100000; i++) {
@@ -34,7 +34,7 @@ public class CountTriplets {
             arr.add(arrItem);
         }
 
-        long ans = countTriplets(arr, 10);
+        long ans = countTriplets(arr, 3);
         System.out.println(ans);
 
 //        bufferedWriter.write(String.valueOf(ans));
@@ -45,26 +45,42 @@ public class CountTriplets {
 	}
 	
 	static long countTriplets(List<Long> arr, long r) {
-		Map<Long, Long> elements = new HashMap<Long, Long>();
+		Map<Long, Long> left = new HashMap<Long, Long>();
+		Map<Long, Long> right = new HashMap<Long, Long>();
 		long count=0;
 		for(Long elem: arr){
-			if(elements.containsKey(elem)){
-				elements.put(elem, elements.get(elem)+1);
+			if(right.containsKey(elem)){
+				right.put(elem, right.get(elem)+1);
 			}else{
-				elements.put(elem, (long)1);
+				right.put(elem, (long)1);
 			}
 		}
-		elements.put((long)1237, (long)100000);
 		
-		Iterator<Long> itr = elements.keySet().iterator();
-		while(itr.hasNext()){
-			Long a = itr.next();
-			if(r==1){
-				count += ((elements.get(a))*(elements.get(a)-1)*(elements.get(a)-2))/6;
-			}else if(elements.containsKey(a*r) && elements.containsKey(a*r*r)){				
-				count += elements.get(a)*elements.get(a*r)*elements.get(a*r*r);
+		for(Long elem: arr){			
+			long c1=0;
+			long c2=0;
+			if(right.get(elem)>0){
+				right.put(elem, right.get(elem)-1);
 			}
+			
+			if(!left.isEmpty() && elem % r==0 && left.containsKey(elem/r)){
+				c1 = left.get(elem/r);
+			}
+			if(!right.isEmpty() && right.containsKey(elem*r)){
+				c2 = right.get(elem*r);
+			}
+			
+			if(left.containsKey(elem)){
+				left.put(elem, left.get(elem)+1);
+			}else{
+				left.put(elem, (long)1);
+			}
+			
+			
+			
+			count += c1*c2;
 		}
+		
 		return count;
 	}
 
