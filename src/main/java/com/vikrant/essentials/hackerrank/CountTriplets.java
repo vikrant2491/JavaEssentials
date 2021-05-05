@@ -16,7 +16,7 @@ public class CountTriplets {
 
 	public static void main(String[] args) throws Exception{
 
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(new File("C:\\Users\\BYO\\JavaWorkspace\\JavaEssentials\\input.txt"))));
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(new File("C:\\Users\\Chetali\\JavaEssentials\\input.txt"))));
 //        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
 
 //        String[] nr = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
@@ -43,6 +43,8 @@ public class CountTriplets {
         bufferedReader.close();
 //        bufferedWriter.close();
 	}
+	
+	
 	
 	static long countTriplets(List<Long> arr, long r) {
 		Map<Long, Long> left = new HashMap<Long, Long>();
@@ -75,7 +77,6 @@ public class CountTriplets {
 			}else{
 				left.put(elem, (long)1);
 			}
-			
 			
 			
 			count += c1*c2;
