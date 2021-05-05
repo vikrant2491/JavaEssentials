@@ -3,11 +3,16 @@ package com.vikrant.essentials.hackerrank;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.StringJoiner;
 
 public class Anagram {
 
 	public static void main(String[] args) {
 		System.out.println(isAnagram("abc", "cab"));
+		StringJoiner s = new StringJoiner("-");
+		s.add("a");
+		s.add("b");
+		System.out.println(s);
 	}
 	
 	public static boolean isAnagram1(String str1, String str2){
