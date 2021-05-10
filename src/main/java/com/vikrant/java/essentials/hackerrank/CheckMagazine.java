@@ -1,6 +1,7 @@
 package com.vikrant.java.essentials.hackerrank;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,7 +11,7 @@ import java.util.Map;
 
 public class CheckMagazine {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
@@ -69,4 +70,6 @@ public class CheckMagazine {
 
 	}
 
-}
+
+
+
